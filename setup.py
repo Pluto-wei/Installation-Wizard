@@ -23,7 +23,7 @@ def installSoftware():
     
 }
     optionInput = input("")
-    option2[optionInput]0
+    option2[optionInput]
 
 
 def microsoftConfig():
