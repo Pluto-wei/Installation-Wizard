@@ -17,7 +17,7 @@ def installSoftware():
         download.downld(ad)
     def vscode():
         print("downloading vscode for win32-x64...")
-        ad="https://aka.ms/win32-x64-user-stable"
+        ad="https://vscode.cdn.azure.cn/stable/86405ea23e3937316009fc27c9361deee66ffbf5/VSCodeUserSetup-x64-1.40.0.exe"
         download.downld(ad)
     color.printBlue("请选择你要安装的软件")
     color.printGreen("a steam\nb vscode \nc Github Desktop \nd matlab \ne typora\n\nq finish")
