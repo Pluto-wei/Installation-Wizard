@@ -86,7 +86,6 @@ def installSoftware():
         finish()      #如果回车
         os.system('cls')
     main2()       #这个地方其实想回到 安装软件那一行（上一级），有简单的方法吗（好像要加个循环，直到q跳出循环。。。明天再加）
-    
 
 
 def microsoftConfig():
