@@ -47,8 +47,9 @@ def downld(ad):
     root="D://"
     path=root+url.split('/')[-1]
     urllib.request.urlretrieve(url,path)
-    
-def exe():
+def exe1():
+    None   
+def exe2():
     None
 #我懂了！！就跟main是一样的，原来给main赋一个函数值然后运行main函数，这里就把main换成exe，
 #但是exe需要定义，定义的时候不需要有啥，反正后面要赋别的函数，，到时候运行就vans
@@ -59,32 +60,34 @@ def again():
     
 def finish():
     color.printYellow("完成")     #应该在这个后面加，输回车后清屏
-    
+    if input("输入回车")=="":
+        os.system('cls')
+    return 1
 
 
 
 def installSoftware():
     # os.system(clear) #错了姐姐 #我没有！  #好好好
-
-    def steam():
-        print("downloading steam...")
-        ad="https://media.st.dl.bscstorage.net/client/installer/SteamSetup.exe"
-        download.downld(ad)
-        #name="SteamSetup.exe"    #想不到从ad上直接截下来的方法 好像能用split 害
-        #download.install(name)    #失败
-    def vscode():
-        print("downloading vscode for win32-x64...")
-        ad="https://vscode.cdn.azure.cn/stable/86405ea23e3937316009fc27c9361deee66ffbf5/VSCodeUserSetup-x64-1.40.0.exe"
-        download.downld(ad)
-    def Github_Desktop():
-        print("downloading Github_Desktop...")
-        ad="https://desktop.githubusercontent.com/releases/2.2.3-3e4755f1/GitHubDesktopSetup.exe"
-        download.downld(ad)
-    def typora():
-        print("downloading typora...")
-        ad="https://www.typora.io/windows/typora-setup-x64.exe"
-        download.downld(ad)
-    def main2():
+    inCtrl=0
+    while inCtrl==0:
+        def steam():
+            print("downloading steam...")
+            ad="https://media.st.dl.bscstorage.net/client/installer/SteamSetup.exe"
+            download.downld(ad)
+            #name="SteamSetup.exe"    #想不到从ad上直接截下来的方法 好像能用split 害
+            #download.install(name)    #失败
+        def vscode():
+            print("downloading vscode for win32-x64...")
+            ad="https://vscode.cdn.azure.cn/stable/86405ea23e3937316009fc27c9361deee66ffbf5/VSCodeUserSetup-x64-1.40.0.exe"
+            download.downld(ad)
+        def Github_Desktop():
+            print("downloading Github_Desktop...")
+            ad="https://desktop.githubusercontent.com/releases/2.2.3-3e4755f1/GitHubDesktopSetup.exe"
+            download.downld(ad)
+        def typora():
+            print("downloading typora...")
+            ad="https://www.typora.io/windows/typora-setup-x64.exe"
+            download.downld(ad)
         color.printBlue("请选择你要安装的软件")
         color.printGreen("a steam\nb vscode \nc Github Desktop \nd matlab \ne typora\n\nq finish")
         option2 = {
@@ -96,12 +99,10 @@ def installSoftware():
         'q': finish   
         }
         optionInput = input("")
-        exe=option2[optionInput]
-        exe()
-        finish()      #如果回车
-        os.system('cls')
-    main2()       #这个地方其实想回到 安装软件那一行（上一级），有简单的方法吗（好像要加个循环，直到q跳出循环。。。明天再加）
-
+        exe2=option2[optionInput]
+        inCtrl=exe2()
+      #这个地方其实想回到 安装软件那一行（上一级），有简单的方法吗（好像要加个循环，直到q跳出循环。。。明天再加）
+    return 0
 
 def microsoftConfig():
     print("配置微软账户\n")
@@ -122,10 +123,12 @@ option = {
 }
 def main():
     printWhite ("Hello.\n请选择要进行的配置\n")
-    color.printRed ("0 安装必备软件 \n1 配置 Microsoft 账户 \n2 \n\nq 退出")
-    optionInput = input("")
-    exe = option[optionInput]
-    exe()
+    outCtrl=0
+    while outCtrl==0:
+        color.printRed ("0 安装必备软件 \n1 配置 Microsoft 账户 \n2 \n\nq 退出")
+        optionInput = input("")
+        exe1 = option[optionInput]
+        outCtrl=exe1()
     
 #从这里开始。。。也不知道对不对 不知道python里面顺序有什么讲究，出现晚了有的还执行不了  #为什么要main
 main()
