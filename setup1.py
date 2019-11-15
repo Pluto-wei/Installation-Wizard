@@ -60,7 +60,7 @@ def finish():
 
 
 def installSoftware():
-    # os.system(clear) #错了姐姐 #我没有！
+    # os.system(clear) #错了姐姐 #我没有！  #好好好
 
     def steam():
         print("downloading steam...")
@@ -112,5 +112,5 @@ def main():
     exe = option[optionInput]
     exe()
     
-#从这里开始。。。也不知道对不对 不知道python里面顺序有什么讲究，出现晚了有的还执行不了
+#从这里开始。。。也不知道对不对 不知道python里面顺序有什么讲究，出现晚了有的还执行不了  #为什么要main
 main()
