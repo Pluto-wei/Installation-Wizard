@@ -1,17 +1,19 @@
 import os
 import color
 import download
-#创建 调用颜色函数
+#创建 调用颜色函数    #我在color.py里改了有linux的 这里没有
 import platform
 import sys
 import ctypes
-__stdInputHandle = -10
-__stdOutputHandle = -11
-__stdErrorHandle = -12
-__foreGroundBLUE = 0x09
+__stdInputHandle = -10    #标准输入句柄
+__stdOutputHandle = -11    #标准输出句柄
+__stdErrorHandle = -12    #标准错误句柄
+__foreGroundBLUE = 0x09    #前景色 CMD命令行字体颜色定义
 __foreGroundGREEN = 0x0a
 __foreGroundRED = 0x0c
 __foreGroundYELLOW = 0x0e
+__foreGroundWHITE = 0x0f
+__backGroundDARKSKYBLUE = 0x30    #后景色 #这里改了 color.py没有
 stdOutHandle=ctypes.windll.kernel32.GetStdHandle(__stdOutputHandle)
 def setCmdColor(color,handle=stdOutHandle):
     return ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
@@ -33,8 +35,11 @@ def printYellow(msg):
     setCmdColor(__foreGroundYELLOW)
     sys.stdout.write(msg + '\n')
     resetCmdColor()
+def printWhite(msg):    #新增
+    setCmdColor(__backGroundDARKSKYBLUE | __foreGroundWHITE)
+    sys.stdout.write(msg + '\n')
+    resetCmdColor()
 #over 好难啊看不懂ww
-
 #添加 下载 指令
 import urllib.request
 def downld(ad):
@@ -48,7 +53,6 @@ def exe():
 #我懂了！！就跟main是一样的，原来给main赋一个函数值然后运行main函数，这里就把main换成exe，
 #但是exe需要定义，定义的时候不需要有啥，反正后面要赋别的函数，，到时候运行就vans
 #欸 我又迷惑了，python里没有main函数，那也要定义吗，我记得我上次没定义
-
 def again():
     os.system('cls')
     main()
@@ -66,18 +70,29 @@ def installSoftware():
         print("downloading steam...")
         ad="https://media.st.dl.bscstorage.net/client/installer/SteamSetup.exe"
         download.downld(ad)
+        #name="SteamSetup.exe"    #想不到从ad上直接截下来的方法 好像能用split 害
+        #download.install(name)    #失败
     def vscode():
         print("downloading vscode for win32-x64...")
         ad="https://vscode.cdn.azure.cn/stable/86405ea23e3937316009fc27c9361deee66ffbf5/VSCodeUserSetup-x64-1.40.0.exe"
         download.downld(ad)
-        
+    def Github_Desktop():
+        print("downloading Github_Desktop...")
+        ad="https://desktop.githubusercontent.com/releases/2.2.3-3e4755f1/GitHubDesktopSetup.exe"
+        download.downld(ad)
+    def typora():
+        print("downloading typora...")
+        ad="https://www.typora.io/windows/typora-setup-x64.exe"
+        download.downld(ad)
     def main2():
         color.printBlue("请选择你要安装的软件")
         color.printGreen("a steam\nb vscode \nc Github Desktop \nd matlab \ne typora\n\nq finish")
         option2 = {
         'a': steam,
         'b': vscode,
-    
+        'c': Github_Desktop,
+        #你整吧我没资源
+        'e': typora,
         'q': finish   
         }
         optionInput = input("")
@@ -106,7 +121,7 @@ option = {
 
 }
 def main():
-    color.printBlue ("Hello.\n请选择要进行的配置\n")
+    printWhite ("Hello.\n请选择要进行的配置\n")
     color.printRed ("0 安装必备软件 \n1 配置 Microsoft 账户 \n2 \n\nq 退出")
     optionInput = input("")
     exe = option[optionInput]
